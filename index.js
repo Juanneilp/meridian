@@ -162,7 +162,7 @@ If all positions STAY and no fees to claim, just write the report with no tool c
 REPORT FORMAT (one per position):
 **[PAIR]** | Age: [X]m | Fees: $[X] | PnL: [X]%
 **Rule:** [number or "none"] | **Decision:** STAY/CLOSE | **Reason:** [1 sentence]
-      `, config.llm.maxSteps, [], "MANAGER", config.llm.managementModel, 2048);
+      `, config.llm.maxSteps, [], "MANAGER", config.llm.managementModel, 4096);
       mgmtReport = content;
     } catch (error) {
       log("cron_error", `Management cycle failed: ${error.message}`);
@@ -270,7 +270,7 @@ STEPS:
 2. deploy_position directly — it fetches the active bin internally, no separate get_active_bin needed.
    Use ${deployAmount} SOL. Do NOT use a smaller amount — this is compounded from your ${currentBalance.sol.toFixed(3)} SOL wallet.
 3. Report: pool chosen, key signals, deploy outcome.
-      `, config.llm.maxSteps, [], "SCREENER", config.llm.screeningModel, 2048);
+      `, config.llm.maxSteps, [], "SCREENER", config.llm.screeningModel, 4096);
       screenReport = content;
     } catch (error) {
       log("cron_error", `Screening cycle failed: ${error.message}`);
